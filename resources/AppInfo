@@ -1,0 +1,5 @@
+APP_TITLE = TinyFormat
+APP_DESCRIPTION = A tiny app to format your Sys/EmuNAND
+APP_AUTHOR = javiMaD
+APP_PRODUCT_CODE = CTR-P-TFMT
+APP_UNIQUE_ID = 0x2695
