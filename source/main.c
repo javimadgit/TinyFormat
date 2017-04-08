@@ -52,19 +52,29 @@ int main(int argc, char** argv)
 			break;
 		}
 		else if (kDown & KEY_Y)
-		{
-			printf("InitializeCtrFileSystem. Please wait...\n");
-			res = FS_InitializeCtrFileSystem( *(fsGetSessionHandle()) );
-			if (res == 0)
+		{ 
+			printf("ALL YOUR DATA WILL BE DELETED (except on SD Card)\n")
+		        printf("Press again Y format system , START to exit\n")
+			if (kDown & KEY_START)
+			{
+				printf("CANCEL! Exiting...\n");
+				break;
+			}
+			else if (kDown & KEY_Y)
+			{ 
+				printf("InitializeCtrFileSystem. Please wait...\n");
+				res = FS_InitializeCtrFileSystem( *(fsGetSessionHandle()) );
+				if (res == 0)
 				printf("Done!\n");
-			else
+				else
 				printf("FAILED!\n");
 
-			printf("Wait for system reboot...\n");
-			svcSleepThread(3000000000);
-			aptOpenSession();
-			APT_HardwareResetAsync(NULL);
-			aptCloseSession();
+				printf("Wait for system reboot...\n");
+				svcSleepThread(3000000000);
+				aptOpenSession();
+				APT_HardwareResetAsync(NULL);
+				aptCloseSession();
+			}
 		}
 
 		// Flush and swap framebuffers
